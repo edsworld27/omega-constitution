@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ============================================================
+  OMEGA FORMULA STACK (FRAMEWORK)
+  ============================================================
+  VERSION:      6.0 (Canonical)
+  STATUS:       SUPREME DOCTRINE
+  DEFINITION:   The Omega Formula Stack is a deterministic,
+                security-first operating system for building
+                reality. Function is proven before Motion (UX),
+                and Motion is proven before Look (Form).
+  ============================================================
+-->
+
+<omega_framework
+  version="6.0"
+  status="SUPREME_DOCTRINE"
+  location="constitution/">
+
+  <!-- ============================================================
+       PART 0: PRECEDENCE OF LAW
+       If instructions conflict, this hierarchy determines the winner
+  ============================================================ -->
+
+  <precedence_of_law>
+    <rank position="1" file="SECURITY.xml">Supreme Override</rank>
+    <rank position="2" file="00_rules.md">Project Mandates and Constraints (generated at project init)</rank>
+    <rank position="3" file="FRAMEWORK.xml">Framework Definitions (this document)</rank>
+    <rank position="4" file="PROMPTING.xml">Communication and Response Quality Standard</rank>
+    <rank position="5" file="PRACTICES.xml">Operational Wisdom and Anti-Patterns</rank>
+    <rank position="6" file="QUALITY.xml">Error Classification and Audit Protocol</rank>
+    <rank position="7" file="INSTRUCTOR.xml">Phases, Checkpoints, B.L.A.S.T.</rank>
+    <rank position="8">Architecture and SOPs (Strategy)</rank>
+    <rank position="9">Tools and Code (Execution)</rank>
+  </precedence_of_law>
+
+  <!-- ============================================================
+       PART 1: O.M.E.G.A (THE PRECONDITIONS)
+       Before a project moves, these five elements must exist
+  ============================================================ -->
+
+  <omega_preconditions name="O.M.E.G.A">
+
+    <element letter="O" name="Origin">
+      <definition>The singular intent of the system.</definition>
+      <artifact>02_project_brief.md</artifact>
+      <requirements>Must define the North Star, Non-Goals, and Constraints.</requirements>
+      <paradigm_lock>Must declare if the project is an App (Logic-First) or Site (Content-First).</paradigm_lock>
+    </element>
+
+    <element letter="M" name="Mandates">
+      <definition>The non-negotiable laws and prohibitions.</definition>
+      <artifact>00_rules.md</artifact>
+      <scope>Includes Never-Do lists, Halt Conditions, and the Circuit Breaker protocols.</scope>
+    </element>
+
+    <element letter="E" name="Environment">
+      <definition>The operational reality and file structure.</definition>
+      <artifacts>01_layout.md, .env (local only), .gitignore, STATE.md</artifacts>
+      <state_rule>The system must maintain STATE.md to track the current Letter and Phase. If STATE.md is missing, execution halts.</state_rule>
+    </element>
+
+    <element letter="G" name="Governance">
+      <definition>Control of dependencies, capabilities, and supply chain.</definition>
+      <artifacts>deps.md (Ledger), stack.md (Registry)</artifacts>
+      <install_gate>No tool may be installed unless declared in deps.md with a version pin and reason.</install_gate>
+    </element>
+
+    <element letter="A" name="Awareness">
+      <definition>The system's memory and context connection.</definition>
+      <artifact>03_context_bridge.md</artifact>
+      <mechanism>Links NotebookLM/LLM context to the project's source of truth. The system must distinguish between known facts and assumptions.</mechanism>
+    </element>
+
+  </omega_preconditions>
+
+  <!-- ============================================================
+       PART 2: F.O.R.M.U.L.A (THE ENGINE)
+       The IRONCORE build order: Function -> UX -> Form
+  ============================================================ -->
+
+  <formula_engine name="F.O.R.M.U.L.A">
+
+    <element letter="F" name="Function">
+      <definition>The engine of value.</definition>
+      <paradigm_a>Apps: Logic, Data Schema, APIs, Auth.</paradigm_a>
+      <paradigm_b>Sites: Content Strategy, Sitemap, Information Architecture.</paradigm_b>
+      <rule>Function must be proven (via tests) before UX begins.</rule>
+    </element>
+
+    <element letter="O" name="Observation">
+      <definition>Proof of work.</definition>
+      <artifact>04_tests/results/</artifact>
+      <rule>It works is invalid. Here is the log/screenshot is valid.</rule>
+    </element>
+
+    <element letter="R" name="Repair">
+      <definition>The Self-Healing Loop.</definition>
+      <artifact>progress.md</artifact>
+      <protocol>Analyze Error, Patch Code, Retest, Update SOP. Never fix the same bug twice without updating the process.</protocol>
+    </element>
+
+    <element letter="M" name="Motion">
+      <definition>Usability, Flow, and Interaction Physics.</definition>
+      <scope>Navigation, F-Patterns, Friction reduction, Error states.</scope>
+      <rule>UX optimizes the use of the Function.</rule>
+    </element>
+
+    <element letter="U" name="Uniformity">
+      <definition>Standardization and Consistency.</definition>
+      <scope>Naming conventions, directory structure, reuse patterns.</scope>
+    </element>
+
+    <element letter="L" name="Look">
+      <definition>Form and Aesthetics.</definition>
+      <scope>Styling, Colors, Brand Assets (07_assets/).</scope>
+      <rule>Applied last. Cannot fix broken Function or poor Motion.</rule>
+    </element>
+
+    <element letter="A" name="Archive">
+      <definition>Compounding Knowledge.</definition>
+      <artifact>06_vault/</artifact>
+      <action>Validated assets are moved to the Vault. Release artifacts are tagged.</action>
+    </element>
+
+  </formula_engine>
+
+  <!-- ============================================================
+       PART 3: S.T.A.C.K (LIFECYCLE AND CONTROL)
+       How the project moves through time
+  ============================================================ -->
+
+  <stack_lifecycle name="S.T.A.C.K">
+
+    <element letter="S" name="Strategy">
+      <definition>Phased execution.</definition>
+      <artifact>01_phases/</artifact>
+      <rule>One phase, one clear objective.</rule>
+    </element>
+
+    <element letter="T" name="Thresholds">
+      <definition>The Gates.</definition>
+      <artifact>PRD.md (per phase)</artifact>
+      <rule>No Phase MVP build begins without an approved PRD defining Acceptance Criteria.</rule>
+      <timebox_rule>Every PRD must define a Time Appetite (Effort Box). If the timebox expires, work halts for re-evaluation.</timebox_rule>
+    </element>
+
+    <element letter="A" name="Abstraction">
+      <definition>Separation of Concerns.</definition>
+      <artifacts>02_architecture/, INTERFACES.md</artifacts>
+      <rule>INTERFACES.md defines the strict boundary between internal logic and external usage. Anything not listed there is not a contract.</rule>
+    </element>
+
+    <element letter="C" name="Control">
+      <definition>Deployment, Safety Triggers, and Termination.</definition>
+      <scope>Rollback plans, Environment promotion (Dev to Prod), and Kill Switches.</scope>
+      <kill_protocol>A project/phase may be intentionally terminated (Killed) if constraints change. This is a valid system state, distinct from failure.</kill_protocol>
+    </element>
+
+    <element letter="K" name="Knowledge">
+      <definition>The Learning Loop.</definition>
+      <artifacts>findings.md, decision_log.md</artifacts>
+      <rule>Every major decision or discovery must be logged.</rule>
+    </element>
+
+  </stack_lifecycle>
+
+  <!-- ============================================================
+       PART 4: I.D.E.A.S (DIVERGENCE)
+       The Sandbox for creativity that protects the Build
+  ============================================================ -->
+
+  <ideas_sandbox name="I.D.E.A.S">
+
+    <element letter="I" name="Ideation">
+      <artifact>05_ideas/inbox.md</artifact>
+      <purpose>Raw thoughts.</purpose>
+    </element>
+
+    <element letter="D" name="Divergence">
+      <artifact>05_ideas/candidates.md</artifact>
+      <purpose>Exploration of options.</purpose>
+    </element>
+
+    <element letter="E" name="Evaluation">
+      <action>Ranking and selection against Mandates.</action>
+    </element>
+
+    <element letter="A" name="Absorption">
+      <action>Validated ideas promoted to a Phase PRD.</action>
+    </element>
+
+    <element letter="S" name="Suspension">
+      <artifact>05_ideas/parking_lot.md</artifact>
+      <purpose>Not now, not lost.</purpose>
+    </element>
+
+  </ideas_sandbox>
+
+  <!-- ============================================================
+       PART 5: S.E.C.U.R.E (THE BINDING)
+       See SECURITY.xml for the Supreme Law
+  ============================================================ -->
+
+  <secure_binding name="S.E.C.U.R.E">
+
+    <element letter="S" name="Secrets">
+      <rule>Never commit .env.</rule>
+    </element>
+
+    <element letter="E" name="Exposure">
+      <rule>Frontend/Backend Split. No keys in client.</rule>
+    </element>
+
+    <element letter="C" name="Containment">
+      <rule>Least Privilege. Input Validation.</rule>
+    </element>
+
+    <element letter="U" name="Update">
+      <rule>Dependency rotation and patching.</rule>
+    </element>
+
+    <element letter="R" name="Review">
+      <rule>Pre-push checks and audit gates.</rule>
+    </element>
+
+    <element letter="E" name="Enforcement">
+      <rule>HALT condition on any security ambiguity.</rule>
+    </element>
+
+  </secure_binding>
+
+  <!-- ============================================================
+       PART 6: OPERATIONAL PROTOCOLS
+  ============================================================ -->
+
+  <operational_protocols>
+
+    <protocol name="Circuit Breaker (Anti-Loop)">
+      <category_tuned_limits>See QUALITY.xml for per-category attempt limits (E1:2, E2:3, E3:4, E4:3, E5:1/HALT, E6:3, E7:2). Default Rule of 3 applies if unclassified.</category_tuned_limits>
+      <new_hypothesis>Never repeat a failed action identically.</new_hypothesis>
+      <halt>If limit reached, generate STOP REPORT and wait for human decision.</halt>
+    </protocol>
+
+    <protocol name="Version Control Doctrine">
+      <atomic_commits>Changes must be isolated and verifiable.</atomic_commits>
+      <tagging>Releases must be tagged for rollback.</tagging>
+      <changelog>All meaningful changes logged in 00_admin/changelog.md.</changelog>
+    </protocol>
+
+    <protocol name="Legal Surface">
+      <requirement>legal/ folder must be initialized (Privacy, Terms, License).</requirement>
+      <constraint>Legal mandates (e.g., Data Deletion) are treated as Functional Requirements, not documentation.</constraint>
+    </protocol>
+
+  </operational_protocols>
+
+</omega_framework>
