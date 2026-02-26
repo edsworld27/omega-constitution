@@ -30,8 +30,11 @@
     <rank position="5" file="PRACTICES.xml">Operational Wisdom and Anti-Patterns</rank>
     <rank position="6" file="QUALITY.xml">Error Classification and Audit Protocol</rank>
     <rank position="7" file="INSTRUCTOR.xml">Phases, Checkpoints, B.L.A.S.T.</rank>
-    <rank position="8">Architecture and SOPs (Strategy)</rank>
-    <rank position="9">Tools and Code (Execution)</rank>
+    <rank position="8" file="kit/PROMPTER.md">Kit Discovery Engine (when kit is active)</rank>
+    <rank position="9" file="kit/kit.config.md">Kit Activation Rules (when kit is active)</rank>
+    <rank position="10" file="kit/[KIT]_KIT.md">Kit Patterns and Checklists (when kit is active)</rank>
+    <rank position="11">Architecture and SOPs (Strategy)</rank>
+    <rank position="12">Tools and Code (Execution)</rank>
   </precedence_of_law>
 
   <!-- ============================================================

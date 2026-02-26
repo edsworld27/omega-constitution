@@ -164,6 +164,14 @@
         and OVERRIDE rules (which files win on conflict).
       </description>
       <rule>If the project type matches a kit's activation trigger, load that kit's pattern file automatically.</rule>
+      <prompter_handoff>
+        When a kit activates, its PROMPTER.md takes over discovery:
+        1. PROMPTER.md contains the requirements table for that project type
+        2. Every requirement must have a value before build begins
+        3. If a requirement is blank, AI asks using batched questions (2-4 max)
+        4. PROMPTER uses constitution methods (PROMPTING.xml) but applies them to the kit domain
+        5. Build only begins when PROMPTER's requirements table is complete
+      </prompter_handoff>
     </kit_auto_activation>
   </seed_system>
 
@@ -409,6 +417,19 @@ STOP REPORT
     </description>
 
     <kit_structure>
+      <file name="PROMPTER.md">
+        <purpose>Discovery engine — requirements table, question batches, evaluation matrix</purpose>
+        <rule>PROMPTER drives the conversation until all requirements are filled</rule>
+      </file>
+      <file name="kit.config.md">
+        <purpose>Activation rules, authority hierarchy, override logic</purpose>
+      </file>
+      <file name="[KIT]_KIT.md">
+        <purpose>Patterns, checklists, and conventions for that project type</purpose>
+      </file>
+      <file name="TRACKER.md">
+        <purpose>Kit-specific progress tracker with relevant columns</purpose>
+      </file>
       <folder name="preproduction/">
         <purpose>Planning, imports, preparation. No code yet.</purpose>
         <contains>CHECKLIST.md, import task files, drop-zone/</contains>
@@ -421,17 +442,27 @@ STOP REPORT
         <purpose>Verification. Task files for testing activities.</purpose>
         <contains>CHECKLIST.md, test task files (Lighthouse, Mobile, etc.)</contains>
       </folder>
-      <file name="TRACKER.md">
-        <purpose>Kit-specific progress tracker with relevant columns.</purpose>
-      </file>
     </kit_structure>
 
     <when_kit_activated>
-      <step order="1">Check for TRACKER.md in the kit — load it</step>
-      <step order="2">Check preproduction/drop-zone/ for existing files</step>
-      <step order="3">If files found in drop-zone, ask user what they are and run appropriate import task</step>
-      <step order="4">Present kit-specific checklist based on current phase</step>
+      <step order="1">Load PROMPTER.md — this drives discovery</step>
+      <step order="2">Check PROMPTER's requirements table against seeds</step>
+      <step order="3">For each blank requirement, ask using batched questions (2-4 max)</step>
+      <step order="4">Check plug-and-play/ for existing files that might fill requirements</step>
+      <step order="5">When requirements table is complete, load [KIT]_KIT.md patterns</step>
+      <step order="6">Present kit-specific checklist based on current phase</step>
+      <step order="7">Build begins only after PROMPTER validation passes</step>
     </when_kit_activated>
+
+    <flexible_discovery_paths>
+      <description>Users can fill requirements through multiple paths:</description>
+      <path name="Full Discovery">Use RUN.md, AI asks questions via PROMPTER, fills seeds</path>
+      <path name="External AI">Use ChatGPT/Claude web to plan, export decisions, paste into seeds</path>
+      <path name="Custom AI">Use organisation's own AI, generate requirements, import to seeds</path>
+      <path name="Self-Placeholder">Fill seeds yourself, mark [PLACEHOLDER] where unsure, AI asks about those</path>
+      <path name="Hybrid">Fill what you know, drop existing docs in plug-and-play/, AI fills gaps</path>
+      <rule>All paths converge: PROMPTER still validates requirements are complete before build</rule>
+    </flexible_discovery_paths>
   </kit_assembly_system>
 
   <!-- ============================================================
