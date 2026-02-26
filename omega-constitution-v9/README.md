@@ -4,69 +4,65 @@
 
 ---
 
-## What It Does
+## Read This First
 
-1. **Keeps AI safe** — Security rules that can't be bypassed
-2. **Ensures nothing gets missed** — Requirements validated before building
-3. **Works on any model** — Smart loading, not context hoarding
-4. **Adapts to you** — Full guidance or just build, your choice
+**[START_HERE.md](START_HERE.md)** — The training manual. Has everything you need with diagrams.
 
----
-
-## Choose Your Mode
-
-| Mode | For | How |
-|:-----|:----|:----|
-| **Full Discovery** | New projects, want guidance | Copy [RUN.md](RUN.md), AI guides you |
-| **Quick Start** | You know what you want | Fill seeds first, AI validates |
-| **Lite Mode** | Smaller models, simple builds | Use [OMEGA_LITE.md](OMEGA_LITE.md) |
-| **Just Build** | Skip to code | Use [ignition/JUST_BUILD.md](ignition/JUST_BUILD.md) |
-
-**Start here:** [RUN.md](RUN.md) has all prompts.
-
----
-
-## How It Works
-
-```
-Constitution (rules)    →    AI scans, summarises    →    Works from memory
-     ↓                              ↓                           ↓
-All 95 files exist         Writes to SESSION_CONTEXT.md    Loads files as needed
-```
-
-The AI doesn't hoard everything in context. It reads what it needs, takes notes, and references its memory. This means:
-- Works on smaller models
-- Faster responses
-- State persists across sessions
-
----
-
-## The 3 Zones
-
-| Zone | Folder | Function |
-|:-----|:-------|:---------|
-| **Constitution** | `constitution/` | Rules, security, workflow (AI's brain) |
-| **User Input** | `user-input/` | Your seeds, your files, your project |
-| **Store** | `store/` | Kits, skills, tools to plug in |
+That's the only doc you need to read as a human.
 
 ---
 
 ## Quick Start
 
-**Option 1:** Copy prompt from [RUN.md](RUN.md) → paste into AI → talk
+**Just want to go?** Copy this into your AI:
 
-**Option 2:** Read [START_HERE.md](START_HERE.md) for full walkthrough
+```
+You are the OMEGA CONSTRUCTOR.
+
+Read constitution/SECURITY.xml, FRAMEWORK.xml, INSTRUCTOR.xml.
+Read user-input/SESSION_CONTEXT.md.
+
+Ask me what I want to build.
+```
+
+**Want to skip questions?** Use [OMEGA_LITE.md](OMEGA_LITE.md) or [ignition/JUST_BUILD.md](ignition/JUST_BUILD.md)
 
 ---
 
-## Learn More
+## What's What
 
-| Doc | What |
-|:----|:-----|
-| [START_HERE.md](START_HERE.md) | Full user guide |
-| [RUN.md](RUN.md) | All startup prompts |
-| [OMEGA_LITE.md](OMEGA_LITE.md) | Single-file rules (~8k tokens) |
-| [store/STORE_GUIDE.md](store/STORE_GUIDE.md) | Kits and skills |
+```
+┌────────────────────────────────────────────────────────────┐
+│                                                            │
+│   FOR YOU (Human)              FOR AI (Agent)              │
+│   ───────────────              ──────────────              │
+│                                                            │
+│   • START_HERE.md              • constitution/*.xml        │
+│     (training manual)            (rules, security)         │
+│                                                            │
+│   • RUN.md                     • store/kits/               │
+│     (startup prompts)            (patterns)                │
+│                                                            │
+│   • user-input/                • Everything else           │
+│     (your project files)                                   │
+│                                                            │
+└────────────────────────────────────────────────────────────┘
+```
+
+**You don't need to read XML.** That's the AI's rulebook.
+
+---
+
+## Modes
+
+| Mode | Tokens | For |
+|:-----|:-------|:----|
+| Full Discovery | ~40k | AI guides you through everything |
+| Quick Start | ~40k | You filled seeds, AI validates |
+| Lite | ~8k | Small models, simple projects |
+| Just Build | ~3k | Skip to code |
+
+Details in [START_HERE.md](START_HERE.md)
 
 ---
 

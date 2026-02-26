@@ -1,296 +1,368 @@
-# START HERE — User Guide
+# OMEGA TRAINING MANUAL
 
-**Omega Constitution Pack v9** — Build anything with AI, the right way.
-
----
-
-## What This Does
-
-1. **Security** — Rules the AI can't bypass (secrets, injection, validation)
-2. **Quality** — Function before form, test what you build
-3. **Completeness** — Nothing gets missed, requirements validated before building
-4. **Flexibility** — Full guidance or skip to code, your choice
+**The only doc you need to read.** Everything else is for the AI.
 
 ---
 
-## Choose How You Work
+## What Is This?
 
-### Decision Tree
+A system that makes AI build things properly:
+- **Safe** — Security rules the AI can't bypass
+- **Complete** — Nothing gets missed
+- **Flexible** — Full guidance or skip to code, your choice
+
+---
+
+## How It Works
 
 ```
-Know exactly what to build?
-├── YES → Want AI guidance anyway?
-│         ├── YES → Full Discovery
-│         └── NO  → Just Build
-└── NO  → Small model (<32k context)?
-          ├── YES → Lite Mode
-          └── NO  → Full Discovery
+┌─────────────────────────────────────────────────────────┐
+│                    YOU (Human)                          │
+│                                                         │
+│   1. Choose a mode (Full / Quick / Lite / Just Build)   │
+│   2. Answer questions (or fill seeds yourself)          │
+│   3. Say "build" when ready                             │
+│   4. Review what AI builds                              │
+│   5. Say "continue" or "fix X"                          │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+                          │
+                          ▼
+┌─────────────────────────────────────────────────────────┐
+│                    AI (Agent)                           │
+│                                                         │
+│   • Reads constitution (XML files — you don't need to)  │
+│   • Asks questions to fill gaps                         │
+│   • Validates requirements before building              │
+│   • Builds, tests, shows results                        │
+│   • Waits for your approval at each step                │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
 ```
 
-### Mode Comparison
-
-| Mode | Context | Discovery | Best For |
-|:-----|:--------|:----------|:---------|
-| **Full Discovery** | ~40k | AI guides you | Complex projects, first-timers |
-| **Quick Start** | ~40k | You filled seeds | Pre-planned projects |
-| **Lite Mode** | ~8k | Minimal | Small models, simple builds |
-| **Just Build** | ~3k | None | You know exactly what you want |
-
 ---
 
-## Full Discovery Mode
-
-**The AI guides you through everything.**
-
-### How to Start
-1. Open this folder in your AI tool (Claude, GPT, etc.)
-2. Copy the "Full Discovery" prompt from [RUN.md](RUN.md)
-3. Paste and start talking
-
-### What Happens
-1. AI loads the constitution (security, framework, instructor)
-2. AI scans your seeds and asks what's missing
-3. AI suggests a kit based on your project type
-4. Kit PROMPTER validates all requirements
-5. Build begins only when everything is filled
-
-### Best For
-- New projects where you're still figuring things out
-- First time using the pack
-- Complex multi-phase builds
-
----
-
-## Quick Start Mode
-
-**You fill the seeds first, AI validates and builds.**
-
-### How to Start
-1. Fill `user-input/seed/PROJECT.md` (minimum: name, type, north star)
-2. Fill other seeds you have info for (BRAND.md, TECH_STACK.md, etc.)
-3. Copy the "Quick Start" prompt from [RUN.md](RUN.md)
-4. Paste and go
-
-### What Happens
-1. AI reads your seeds
-2. AI checks against the kit PROMPTER requirements
-3. AI only asks about blank fields or [PLACEHOLDER] markers
-4. Build begins faster
-
-### Best For
-- You planned externally (ChatGPT, docs, whiteboard)
-- Migrating an existing project
-- You know what you want, just need it built
-
----
-
-## Lite Mode
-
-**Single-file rules for smaller models.**
-
-### How to Start
-1. Copy the prompt from [OMEGA_LITE.md](OMEGA_LITE.md)
-2. Paste into your AI
-3. Answer the simple questions
-
-### What You Get
-- ~8k tokens instead of ~85k
-- Core security, workflow, and rules
-- Works on models with <32k context
-- Still maintains safety and quality
-
-### What You Give Up
-- Full kit patterns and checklists
-- Detailed blueprints
-- Multi-phase tracking
-
-### Best For
-- Smaller AI models
-- Simple projects
-- Quick prototypes
-
----
-
-## Just Build Mode
-
-**Skip discovery, straight to code.**
-
-### How to Start
-1. Open [ignition/JUST_BUILD.md](ignition/JUST_BUILD.md)
-2. Fill in the template:
-   - Project: What you're building
-   - Tech Stack: What tools
-   - Start With: First thing to build
-3. Paste into AI and go
-
-### What Happens
-1. AI respects security rules (always)
-2. AI builds what you asked
-3. AI shows you results
-4. You iterate
-
-### What You Give Up
-- Discovery questions
-- Requirement validation
-- Kit checklists
-- PRD/SOP generation
-
-### Best For
-- You know EXACTLY what you want
-- Small, focused tasks
-- Prototyping and experiments
-- Time-sensitive builds
-
----
-
-## How the AI Works (Smart Reader)
-
-The AI doesn't load everything at once. It's a **smart reader with a notepad**.
+## Choose Your Mode
 
 ```
-Full Constitution (95 files)
-         ↓
-    AI reads Tier 1 (always loaded)
-         ↓
-    AI scans other files as needed
-         ↓
-    AI writes findings to SESSION_CONTEXT.md
-         ↓
-    AI works from its notes
-         ↓
-    AI loads more files only when needed
+                    ┌─────────────────────┐
+                    │ What do you need?   │
+                    └─────────┬───────────┘
+                              │
+              ┌───────────────┼───────────────┐
+              │               │               │
+              ▼               ▼               ▼
+     ┌────────────┐   ┌────────────┐   ┌────────────┐
+     │ Don't know │   │ Know what  │   │ Know exact │
+     │ what I want│   │ I want     │   │ spec       │
+     └─────┬──────┘   └─────┬──────┘   └─────┬──────┘
+           │                │                │
+           ▼                ▼                ▼
+    ┌─────────────┐  ┌─────────────┐  ┌─────────────┐
+    │    FULL     │  │   QUICK     │  │ JUST BUILD  │
+    │  DISCOVERY  │  │   START     │  │             │
+    │   (~40k)    │  │   (~40k)    │  │    (~3k)    │
+    └─────────────┘  └─────────────┘  └─────────────┘
+           │                │                │
+           │                │                │
+           ▼                ▼                ▼
+    AI guides you    You fill seeds    Skip to code
+    through everything  AI validates     immediately
 ```
 
-### Why This Matters
-- **Works on smaller models** — Not hoarding 85k tokens
-- **Faster responses** — Less to process
-- **Persistent memory** — SESSION_CONTEXT.md survives across sessions
-- **Efficient** — Reads once, references notes
-
-### The Tiers
-
-| Tier | What | When |
-|:-----|:-----|:-----|
-| **Tier 1** | SECURITY, FRAMEWORK, INSTRUCTOR, SESSION_CONTEXT.md | Always loaded |
-| **Tier 2** | Current kit PROMPTER, active blueprint | When actively working |
-| **Tier 3** | Everything else | Read, summarise, release |
+**Small model (<32k context)?** Use **LITE MODE** (~8k tokens)
 
 ---
 
-## Working Memory
+## Mode Details
 
-`user-input/SESSION_CONTEXT.md` is the AI's notepad.
+### Full Discovery
+**Best for:** New projects, exploring options, first-timers
 
-### What It Stores
-- Project summary (name, type, north star)
-- Requirements status (what's filled, what's blank)
-- Key decisions (locked choices)
-- Open questions (still to decide)
-- Current checkpoint and blockers
-- File summaries (what AI has scanned)
-- Session log (what happened)
+```
+You ──► Paste RUN.md prompt ──► AI asks questions ──► AI fills seeds ──► Build
+```
 
-### When It Updates
-- After completing a checkpoint
-- After filling a seed
-- After a key decision
-- Before ending a session
+### Quick Start
+**Best for:** You planned elsewhere, know requirements
 
-### Why It Matters
-- Resume sessions instantly
-- AI remembers what it learned
-- No re-reading the same files
+```
+You ──► Fill seed files ──► Paste Quick Start prompt ──► AI validates ──► Build
+```
+
+### Lite Mode
+**Best for:** Small AI models, simple projects
+
+```
+You ──► Paste OMEGA_LITE.md ──► Minimal questions ──► Build
+```
+
+### Just Build
+**Best for:** You know EXACTLY what you want, prototyping
+
+```
+You ──► "Build [X] with [tech]" ──► AI builds ──► Done
+```
+
+---
+
+## The Build Flow
+
+```
+┌──────────────────────────────────────────────────────────────────┐
+│                                                                  │
+│  ┌─────────┐    ┌─────────┐    ┌─────────┐    ┌─────────┐       │
+│  │DISCOVER │───►│  PLAN   │───►│  BUILD  │───►│  TEST   │──►🚀  │
+│  └─────────┘    └─────────┘    └─────────┘    └─────────┘       │
+│       │              │              │              │             │
+│       ▼              ▼              ▼              ▼             │
+│   You answer     You approve    You review    You approve       │
+│   questions      the plan       the code      results           │
+│                                                                  │
+└──────────────────────────────────────────────────────────────────┘
+
+At EVERY step: AI stops and waits for you. You are the pilot.
+```
+
+---
+
+## Quick Start Guide
+
+### Option 1: Let AI Guide You (Recommended)
+
+1. Open this folder in your AI (Claude, GPT, Cursor, etc.)
+2. Copy this prompt:
+
+```
+You are the OMEGA CONSTRUCTOR.
+
+Read constitution/SECURITY.xml, FRAMEWORK.xml, INSTRUCTOR.xml.
+Read user-input/SESSION_CONTEXT.md.
+
+Ask me what I want to build. Guide me through it.
+```
+
+3. Paste and talk
+
+### Option 2: Skip to Building
+
+1. Copy this prompt:
+
+```
+You are the OMEGA CONSTRUCTOR in JUST BUILD mode.
+
+Build this:
+- Project: [describe what you want]
+- Tech: [what tools/frameworks]
+- Start with: [first thing to build]
+
+GO.
+```
+
+2. Fill in the brackets, paste, and go
+
+---
+
+## What You Might Say
+
+| Say This | AI Does |
+|:---------|:--------|
+| "What do you know?" | Summarizes current state |
+| "What's next?" | Lists next actions |
+| "Build it" | Starts building |
+| "Show me" | Displays what was built |
+| "Fix [X]" | Addresses specific issue |
+| "Continue" | Moves to next step |
+| "Stop" | Halts and waits |
+| "Start over" | Resets |
+
+---
+
+## Project Types
+
+```
+┌─────────────┐  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐
+│   WEBSITE   │  │    SAAS     │  │     API     │  │ AUTOMATION  │
+├─────────────┤  ├─────────────┤  ├─────────────┤  ├─────────────┤
+│ • Pages     │  │ • Auth      │  │ • Endpoints │  │ • Triggers  │
+│ • SEO       │  │ • Billing   │  │ • Versioning│  │ • Retries   │
+│ • Mobile    │  │ • Dashboard │  │ • Rate limit│  │ • Errors    │
+│ • Speed     │  │ • Multi-    │  │ • Docs      │  │ • Logging   │
+│             │  │   tenant    │  │             │  │             │
+└─────────────┘  └─────────────┘  └─────────────┘  └─────────────┘
+```
+
+Tell the AI your project type. It loads the right patterns automatically.
 
 ---
 
 ## Have Existing Work?
 
-### Drop Files
-Put existing files in `user-input/plug-and-play/`:
-- Wireframes
-- Brand guidelines
-- Existing code
-- Documentation
-
-The AI will detect them and ask what they are.
-
-### Or Point to Them
-Tell the AI: "My files are at /path/to/files"
-
-Works the same way.
-
----
-
-## Quick Commands
-
-| Say | AI Does |
-|:----|:--------|
-| "What do you know?" | Summarizes current state |
-| "What's next?" | Lists next actions |
-| "Confirmed" / "Approved" | Proceed to next checkpoint |
-| "Stop" | Halt and wait |
-| "Continue" | Resume from where you left off |
-| "Audit" | Check build against requirements |
-| "Handoff" | Generate session summary |
+```
+┌────────────────────────────────────────────────────────┐
+│                                                        │
+│   Option A: Drop files in user-input/plug-and-play/   │
+│                                                        │
+│   Option B: Tell AI "My files are at /path/to/files"  │
+│                                                        │
+└────────────────────────────────────────────────────────┘
+                          │
+                          ▼
+              AI detects and asks what they are
+                          │
+                          ▼
+              AI incorporates them into the build
+```
 
 ---
 
-## The 3 Zones
+## The Folder Structure (You Only Touch `user-input/`)
 
-| Zone | Folder | Function | You Touch? |
-|:-----|:-------|:---------|:-----------|
-| **Constitution** | `constitution/` | Rules, security, workflow | No |
-| **User Input** | `user-input/` | Seeds, files, project state | Yes |
-| **Store** | `store/` | Kits, skills, tools | Copy what you need |
+```
+omega-constitution-v9/
+│
+├── constitution/          ◄── FOR AI ONLY (don't edit)
+│   ├── SECURITY.xml           Rules the AI follows
+│   ├── FRAMEWORK.xml          How things work
+│   ├── INSTRUCTOR.xml         Build instructions
+│   └── ...                    Other AI rules
+│
+├── user-input/            ◄── YOUR STUFF
+│   ├── seed/                  Your project info (AI fills or you fill)
+│   ├── plug-and-play/         Drop existing files here
+│   └── SESSION_CONTEXT.md     AI's memory (auto-updated)
+│
+├── store/                 ◄── TOOLS (copy what you need)
+│   ├── kits/                  Project patterns
+│   └── skills/                Agent templates
+│
+├── RUN.md                 ◄── All startup prompts
+├── OMEGA_LITE.md          ◄── Single-file rules (small models)
+└── START_HERE.md          ◄── THIS FILE (training manual)
+```
+
+**Rule:** You only need to touch `user-input/`. Everything else is for the AI.
 
 ---
 
-## Project Types & Kits
+## How the AI Remembers
 
-| Type | Kit | Focus |
-|:-----|:----|:------|
-| **Website** | `store/kits/website/` | Pages, SEO, performance, mobile |
-| **SaaS** | `store/kits/saas/` | Auth, billing, dashboard, multi-tenancy |
-| **API** | `store/kits/api/` | Endpoints, versioning, rate limits, errors |
-| **Automation** | `store/kits/automation/` | Triggers, retries, error handling, logging |
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    SESSION 1                                │
+│                                                             │
+│   AI scans your files ──► Writes notes to SESSION_CONTEXT  │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────┐
+│                    SESSION 2                                │
+│                                                             │
+│   AI reads SESSION_CONTEXT ──► Knows where you left off    │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
 
-Each kit has:
-- **PROMPTER.md** — Requirements table, discovery questions
-- **[KIT]_KIT.md** — Patterns and checklists
-- **kit.config.md** — When it activates, override rules
+No more re-explaining. The AI remembers.
+```
 
 ---
 
-## Files Reference
+## When Things Go Wrong
 
-| File | What |
+```
+┌──────────────────────────────────────────────────────────┐
+│                                                          │
+│   AI tries to fix ──► Fails ──► Tries different way     │
+│                                          │               │
+│                                          ▼               │
+│                              Still fails after 3 tries   │
+│                                          │               │
+│                                          ▼               │
+│                              AI STOPS and asks you:      │
+│                                                          │
+│   "BLOCKED:                                              │
+│    - Goal: [what it was doing]                           │
+│    - Error: [what went wrong]                            │
+│    - Tried: [what it attempted]                          │
+│    - Need: [what it needs from you]"                     │
+│                                                          │
+└──────────────────────────────────────────────────────────┘
+```
+
+The AI never loops forever. It stops and asks for help.
+
+---
+
+## The Golden Rules
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                                                             │
+│   1. SECURITY IS SUPREME                                    │
+│      AI never exposes secrets or bypasses safety            │
+│                                                             │
+│   2. YOU ARE THE PILOT                                      │
+│      AI executes, you decide                                │
+│                                                             │
+│   3. FUNCTION BEFORE FORM                                   │
+│      Make it work, then make it pretty                      │
+│                                                             │
+│   4. ASK, DON'T ASSUME                                      │
+│      AI asks when unclear, never guesses                    │
+│                                                             │
+│   5. SHOW, DON'T TELL                                       │
+│      AI provides evidence, not just claims                  │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Summary
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                                                             │
+│   1. Pick a mode (Full / Quick / Lite / Just Build)         │
+│                                                             │
+│   2. Paste the prompt from RUN.md (or OMEGA_LITE.md)        │
+│                                                             │
+│   3. Answer questions or tell it what to build              │
+│                                                             │
+│   4. Review what it builds, say "continue" or "fix X"       │
+│                                                             │
+│   5. Repeat until done                                      │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+
+That's it. The AI handles the complexity. You just talk.
+```
+
+---
+
+## Files You Might Use
+
+| File | When |
 |:-----|:-----|
-| [RUN.md](RUN.md) | All startup prompts (Full, Quick, Lite, Just Build) |
-| [OMEGA_LITE.md](OMEGA_LITE.md) | Single-file condensed rules |
-| [ignition/JUST_BUILD.md](ignition/JUST_BUILD.md) | Skip discovery, build now |
-| [store/STORE_GUIDE.md](store/STORE_GUIDE.md) | How kits and skills work |
-| [store/kits/KIT_GUIDE.md](store/kits/KIT_GUIDE.md) | Kit system details |
+| [RUN.md](RUN.md) | Starting any project (has all prompts) |
+| [OMEGA_LITE.md](OMEGA_LITE.md) | Small AI models or simple projects |
+| [ignition/JUST_BUILD.md](ignition/JUST_BUILD.md) | Skip straight to code |
 
 ---
 
-## Principles
+## Need Help?
 
-1. **Function before Form** — Make it work, then make it pretty
-2. **Security is Supreme** — Never compromise safety
-3. **Human is the Pilot** — AI executes, you decide
-4. **Ask, Don't Assume** — Questions over guessing
-5. **Show, Don't Tell** — Evidence over claims
-6. **Know, Don't Hoard** — Smart loading, not context bloat
-
----
-
-## Getting Help
-
-- **Switch modes:** Say "Switch to [mode name]"
-- **More guidance:** Say "Switch to full mode"
-- **Less ceremony:** Say "Just build this: [description]"
-- **Stuck:** Say "Stop. What's blocking us?"
+| Problem | Solution |
+|:--------|:---------|
+| AI is confused | Say "Stop. What do you know? What's blocking us?" |
+| Want more guidance | Say "Switch to full discovery mode" |
+| Want less ceremony | Say "Just build mode" |
+| AI forgot something | Say "Read SESSION_CONTEXT.md" |
+| Starting over | Delete contents of `user-input/seed/` and `SESSION_CONTEXT.md` |
 
 ---
+
+**You don't need to read anything else.** This is your training manual. The XML files are for the AI, not you.
 
 *Built by Ed. Powered by the Omega Formula Stack.*
