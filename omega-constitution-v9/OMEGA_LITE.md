@@ -26,6 +26,12 @@
 3. **Show your work** — Present what you built, wait for approval
 4. **Checkpoint before proceeding** — Human approves each phase
 
+### Smart Reader (Context Management)
+1. **Know, don't hoard** — Know files exist, load only what you need now
+2. **Summarise, then release** — Read file, extract info, write to memory, free context
+3. **Memory over re-reading** — Use SESSION_CONTEXT.md instead of re-scanning files
+4. **Just-in-time loading** — Load templates when needed, not at session start
+
 ---
 
 ## THE FLOW

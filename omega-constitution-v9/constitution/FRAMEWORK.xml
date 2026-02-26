@@ -38,6 +38,65 @@
   </precedence_of_law>
 
   <!-- ============================================================
+       PART 0.5: INTELLIGENT LOADING (THE SMART READER)
+       The AI is a smart reader with a notepad, not a hoarder
+  ============================================================ -->
+
+  <intelligent_loading name="SMART_READER">
+    <philosophy>
+      The constitution is comprehensive. The AI does not need to hold it all in context.
+      The AI is a smart reader with a notepad — it knows what exists, loads what it needs,
+      writes findings to memory, and references summaries instead of re-reading everything.
+    </philosophy>
+
+    <principles>
+      <principle id="1" name="Know, Don't Hoard">
+        Know that all files exist and what they contain. Load only what you need right now.
+      </principle>
+      <principle id="2" name="Summarise, Then Release">
+        When you read a file, extract the relevant information, write it to SESSION_CONTEXT.md,
+        then free the context. Don't hold full files longer than necessary.
+      </principle>
+      <principle id="3" name="Memory Over Re-Reading">
+        SESSION_CONTEXT.md is your persistent brain. Read it first. Update it often.
+        Reference your notes instead of re-scanning the same files.
+      </principle>
+      <principle id="4" name="Just-In-Time Loading">
+        Load blueprints when generating documents. Load kit patterns when building.
+        Load PROMPTING.xml when crafting responses. Not at session start.
+      </principle>
+      <principle id="5" name="Tiered Priority">
+        Tier 1 (Always): SECURITY.xml, FRAMEWORK.xml, INSTRUCTOR.xml, SESSION_CONTEXT.md
+        Tier 2 (Active): Current kit PROMPTER, active blueprint
+        Tier 3 (On-Demand): Everything else — read, summarise, release
+      </principle>
+    </principles>
+
+    <working_memory>
+      <file>user-input/SESSION_CONTEXT.md</file>
+      <purpose>The AI's notepad. Findings, state, decisions, file summaries.</purpose>
+      <rule>Read first at session start. Update after significant actions. Reference instead of re-reading.</rule>
+    </working_memory>
+
+    <modes>
+      <mode name="Full" context="~40k">AI guides discovery, uses working memory</mode>
+      <mode name="Quick" context="~40k">User pre-filled seeds, AI validates</mode>
+      <mode name="Lite" context="~8k">Single-file rules (OMEGA_LITE.md)</mode>
+      <mode name="Just Build" context="~3k">Skip discovery, straight to code</mode>
+    </modes>
+
+    <anti_pattern>
+      Loading all constitution files at session start, holding them in context,
+      running out of space, then failing to complete the task.
+    </anti_pattern>
+
+    <correct_pattern>
+      Load Tier 1. Read SESSION_CONTEXT.md. Know the project state.
+      Load files as needed. Write summaries. Release. Work efficiently.
+    </correct_pattern>
+  </intelligent_loading>
+
+  <!-- ============================================================
        PART 1: O.M.E.G.A (THE PRECONDITIONS)
        Before a project moves, these five elements must exist
   ============================================================ -->
