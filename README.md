@@ -1,80 +1,38 @@
-# OMEGA CONSTITUTION PACK — v9
+# IGNITION PROMPTS (Manual)
 
-**Build anything with AI, the right way.**
+**Prefer [RUN.md](../RUN.md)?** It lets AI interview you and fill seeds automatically.
 
----
-
-## Read This First
-
-**[START HERE/START_HERE.md](START_HERE/START_HERE.md)** — The training manual. Has everything you need with diagrams.
-
-That's the only doc you need to read as a human.
+These manual prompts are for when you've already filled your seeds and want a specific scenario.
 
 ---
 
-## Quick Start
+## Scenarios
 
-**Just want to go?** Copy this into your AI:
-
-```
-You are the OMEGA CONSTRUCTOR.
-
-Read CONSTITUTION/SECURITY.xml, FRAMEWORK.xml, INSTRUCTOR.xml.
-Read USER SPACE/SESSION_CONTEXT.md.
-
-Ask me what I want to build.
-```
-
-**Want to skip questions?** Use [START HERE/OMEGA_LITE.md](START HERE/OMEGA_LITE.md) or [CONSTITUTION/JUST_BUILD.md](CONSTITUTION/JUST_BUILD.md)
+| File | Use When |
+|------|----------|
+| [FRESH_BUILD.md](FRESH_BUILD.md) | Starting from scratch (seeds filled) |
+| [IMPORT_PROJECT.md](IMPORT_PROJECT.md) | Bringing in existing work |
+| [RESUME_SESSION.md](RESUME_SESSION.md) | Continuing previous session |
+| [AUDIT_ONLY.md](AUDIT_ONLY.md) | Checking without building |
+| [BACKEND_ONLY.md](BACKEND_ONLY.md) | Frontend exists, build backend |
+| [FRONTEND_ONLY.md](FRONTEND_ONLY.md) | Backend exists, build frontend |
 
 ---
 
-## The Master Daemon
+## How to Use
 
-Omega comes with self-healing background scripts (auto-updating project maps, security scanners, and changelogs).
-To turn them on, run this command from the `Constution V10` folder:
-
-```bash
-python3 CONSTITUTION/python/omega_daemon.py
-```
+1. Fill `USER SPACE/dev-work/seed/PROJECT.md` first
+2. Pick your scenario above
+3. Copy the prompt (the code block)
+4. Paste into your AI tool
 
 ---
 
-## What's What
+## Quick Commands
 
-```text
-┌────────────────────────────────────────────────────────────┐
-│                                                            │
-│   FOR YOU (Human)              FOR AI (Agent)              │
-│   ───────────────              ──────────────              │
-│                                                            │
-│   • START HERE/                • CONSTITUTION/*.xml        │
-│     (training & run docs)        (rules, security, modes)  │
-│                                                            │
-│   • STORE/                     • STORE/                    │
-│     (link to omega-store repo)                           │
-│                                                            │
-│   • USER SPACE/                                            │
-│     (your project files)                                   │
-│                                                            │
-└────────────────────────────────────────────────────────────┘
-```
-
-**You don't need to read XML.** That's the AI's rulebook.
-
----
-
-## Modes
-
-| Mode | Tokens | For |
-|:-----|:-------|:----|
-| Full Discovery | ~40k | AI guides you through everything |
-| Quick Start | ~40k | You filled seeds, AI validates |
-| Lite | ~8k | Small models, simple projects |
-| Just Build | ~3k | Skip to code |
-
-Details in [START HERE/START_HERE.md](START HERE/START_HERE.md)
-
----
-
-*Built by Ed. Powered by the Omega Formula Stack.*
+| Say | AI Does |
+|-----|---------|
+| "Confirmed" | Proceed |
+| "Stop" | Halt |
+| "Audit" | Check build |
+| "Handoff" | Session summary |
