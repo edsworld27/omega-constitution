@@ -1,14 +1,11 @@
-    <directive name="5-Zone Dev Scaffolding (The Map)">
-        <rule>00_Constitution: Supreme rules, XML protocols, and system brain.</rule>
-        <rule>01_User_Input: Project North Star, Seeds, Briefs, and Pilot commands.</rule>
-        <rule>02_Evaluations: SWOTs, Security Audits, and sharded project history.</rule>
-        <rule>03_Context: Modular session memory and fractal context shards.</rule>
-        <rule>04_Implementations: Sharded Phases, Tasks, and execution plans.</rule>
-        <rule>05_Ideation: Expansion inbox, research, and future concepts.</rule>
+    <directive name="Elastic Scaffolding (The Fractal Core)">
+        <rule>CORE CLUSTER (00-05): The standard bootstrap zones for rules, intent, audits, memory, and plans.</rule>
+        <rule>FRACTAL FULFILLMENT: The AI is AUTHORIZED to spawn new zones (06, 07+) or sub-cluster nodes whenever project complexity or the Rule of 3 demands it.</rule>
+        <rule>ONBOARDING SYNERGY: Scaffolding scale is determined during the Onboarding interview. More complex projects trigger deeper initial branching.</rule>
     </directive>
     <directive name="Fractal Sharding & Boundaries">
-        <rule>DEV-ONLY MANDATE: Fractal Sharding (Rule of 3) and Tree Map Spawning apply STRICTLY to the 00-05 Dev Scaffolding.</rule>
+        <rule>DEV-ONLY MANDATE: Fractal Sharding (Rule of 3) and Tree Map Spawning apply STRICTLY to the Dev Scaffolding zones.</rule>
         <rule>PROJECT STERILITY: The `project/` directory MUST remain un-sharded. Source code follows standard industry conventions.</rule>
-        <rule>RECURSIVE FULFILLMENT: Files shard after 3 items; folders shard after 3 subdirectories. Infinite recursive organization.</rule>
+        <rule>RECURSIVE FULFILLMENT: Scaling is elastic. Files shard after 3 items; folders shard after 3 subdirectories. Infinite recursive fulfillment.</rule>
     </directive>
 </fractal_protocol>
