@@ -1,0 +1,16 @@
+<fractal_protocol version="1.0">
+    <directive name="The Rule of 3 (Fractal Sharding)">
+        <rule>FILE SHARDING: Every directory MUST shard its contents after 3 files into a versioned subdirectory (e.g., `v1_files/`).</rule>
+        <rule>FOLDER SHARDING: Every parent directory MUST shard its subdirectories after 3 folders into a versioned meta-folder (e.g., `cluster_v1/`).</rule>
+        <rule>RECURSION: This rule is recursive, creating an infinite fractal tree of organized project memory.</rule>
+    </directive>
+    <directive name="Tree Map Spawning">
+        <rule>Every directory in the fractal tree MUST contain a local `TREE_MAP.md` or `INDEX.md` at its root.</rule>
+        <rule>The Tree Map MUST be spawned immediately upon the creation of the first shard or meta-folder.</rule>
+        <rule>The Tree Map MUST link to all children (files or sub-shards) and provide a 1-sentence summary of their contents to enable high-speed AI navigation.</rule>
+    </directive>
+    <directive name="Scope of Application">
+        <rule>Applies to all developer-facing directories: `phases/`, `changelog/`, `evaluations/`, `ideation/`, and `context/`.</rule>
+        <rule>Recommended for the `project/` directory for complex builds, but optional for simple handoffs.</rule>
+    </directive>
+</fractal_protocol>
