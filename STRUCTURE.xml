@@ -19,29 +19,14 @@
   ============================================================ -->
 
   <folder_tree><![CDATA[
-project_root/
-├── 00_admin/               # Logs, decisions, and changelogs (A - Archive)
-├── 01_phases/              # Strategy & MVP iterations (S - Strategy)
-│   └── phase_01_foundation/# First phase (Auto-created)
-│       ├── mvp/            # Thresholds (T)
-│       └── build/
-├── 02_architecture/        # SOPs & Schemas (A - Abstraction)
-├── 03_tools/               # Deterministic Scripts (F - Function)
-├── 04_tests/               # Evidence & Proof (O - Observation)
-│   ├── results/            # Timestamped evidence bundles
-│   └── fixtures/
-├── 05_ideas/               # Divergence Sandbox (I - Ideation)
-│   ├── inbox.md
-│   ├── candidates.md
-│   └── parking_lot.md
-├── 06_vault/               # Knowledge Compounding (K - Knowledge)
-│   ├── kits/               # Active Kits
-│   └── knowledge_vault/
-├── 07_assets/              # Visuals & Media (L - Look)
-├── frontend/               # Client-Side (Hostile / NO SECRETS)
-├── backend/                # Server-Side (Trusted / SECRETS ALLOWED)
-├── legal/                  # Compliance Surface (Mandatory)
-└── .tmp/                   # Ephemeral workbench
+dev-work/
+├── 00_Constitution/      # Local rules & brain
+├── 01_User_Input/        # Seeds, PRDs, and Pilot intent
+├── 02_Evaluations/       # SWOTs, Audits, and sharded history
+├── 03_Context/           # Modular session memory
+├── 04_Implementations/   # Phases, Tasks, and execution plans
+└── 05_Ideation/          # Inbox and archive
+project/                  # THE STERILE PRODUCT (Your App Source)
   ]]></folder_tree>
 
   <!-- ============================================================

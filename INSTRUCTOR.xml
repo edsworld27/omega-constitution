@@ -10,7 +10,7 @@
 -->
 
 <omega_instructor
-  version="6.6"
+  version="6.7"
   location="constitution/">
 
   <!-- ============================================================
@@ -33,7 +33,7 @@
     <directive order="8">Audit Protocol: QUALITY.xml and EVALUATION_PROTOCOL.xml define how to audit projects efficiently.</directive>
     <directive order="9">Error Taxonomy: QUALITY.xml classifies errors (E1-E7) with repair protocols.</directive>
     <directive order="10">Multi-Session: PRACTICES.xml governs session continuity.</directive>
-    <directive order="11">Standard Scaffolding: FRACTAL_PROTOCOL.xml mandates the 00-05 Dev Mapping (01=User Input). AI MUST scaffold the dev-work space into an infinite fractal while keeping the project space sterile for handoff.</directive>
+    <directive order="11">Structural Alignment: INSTRUCTOR.xml mandates that at session start, the Agent MUST reorganize the `dev-work` directory into the 00-05 Zone Mapping. All legacy folders (phases, context, etc.) must be moved into their corresponding 01-05 zones. This is the first action of every spiral.</directive>
   </prime_directives>
 
   <!-- ============================================================
@@ -47,7 +47,7 @@
       cycles of increasing precision.
     </description>
 
-    <flow>LOCATE CONSTITUTION (00) -> SCAN INPUT (01) -> SPAWN SHARDS -> NAVIGATE FRACTAL -> GATHER -> DIAGNOSE -> GENERATE -> PRESENT -> APPROVE -> REFINE</flow>
+    <flow>LOCATE CONSTITUTION (00) -> ALIGN STRUCTURE -> SCAN INPUT (01) -> SPAWN SHARDS -> NAVIGATE FRACTAL -> GATHER -> DIAGNOSE -> GENERATE -> PRESENT -> APPROVE -> REFINE</flow>
 
     <applications>
       <apply>Gathering project context, diagnosing gaps, generating PRD, presenting, approving</apply>
@@ -485,12 +485,20 @@ STOP REPORT
       </hive_job_detection>
 
         <step order="1">At session start, locate `00_Constitution` and ingest the local laws (FRACTAL_PROTOCOL, INSTRUCTOR, etc.).</step>
-        <step order="2">Scan `01_User_Input` to extract the North Star, Seeds, and current Pilot intent.</step>
-        <step order="3">Read `03_Context/CONTEXT_MAP.md` to identify active shards and fractal addresses.</step>
-        <step order="4">If any directory in the 01-05 zones exceeds the **RULE OF 3**, execute the **FRACTAL SHARDING** protocol.</step>
-        <step order="5">NEVER shard files or create versioned clusters inside the standard `project/` directory.</step>
-        <step order="6">Update sharded modules, local maps, and the `MASTER_PRD.md` after each significant action.</step>
-        <step order="7">Prune context by summarizing finished sub-tasks into the fractal tree (within dev-work).</step>
+        <step order="2" name="ALIGNMENT">If `dev-work/` contains legacy folders (seeds, phases, context, evaluations, ideation) not nested within the 01-05 zones, IMMEDIATELY reorganize them:
+          - seeds/* -> 01_User_Input/
+          - evaluations/* -> 02_Evaluations/
+          - context/* -> 03_Context/
+          - phases/* -> 04_Implementations/
+          - task files -> 04_Implementations/Tasks/
+          - ideation/inbox.md -> 05_Ideation/
+        </step>
+        <step order="3">Scan `01_User_Input` to extract the North Star, Seeds, and current Pilot intent.</step>
+        <step order="4">Read `03_Context/CONTEXT_MAP.md` to identify active shards and fractal addresses.</step>
+        <step order="5">If any directory in the 01-05 zones exceeds the **RULE OF 3**, execute the **FRACTAL SHARDING** protocol.</step>
+        <step order="6">NEVER shard files or create versioned clusters inside the standard `project/` directory.</step>
+        <step order="7">Update sharded modules, local maps, and the `MASTER_PRD.md` after each significant action.</step>
+        <step order="8">Prune context by summarizing finished sub-tasks into the fractal tree (within dev-work).</step>
       </protocol>
 
       <what_to_write>
