@@ -10,7 +10,7 @@
 -->
 
 <omega_instructor
-  version="7.0"
+  version="7.1"
   location="constitution/">
 
   <!-- ============================================================
@@ -33,7 +33,7 @@
     <directive order="8">Audit Protocol: QUALITY.xml and EVALUATION_PROTOCOL.xml define how to audit projects efficiently.</directive>
     <directive order="9">Error Taxonomy: QUALITY.xml classifies errors (E1-E7) with repair protocols.</directive>
     <directive order="10">Multi-Session: PRACTICES.xml governs session continuity.</directive>
-    <directive order="11">Integrated Architecture: INSTRUCTOR.xml mandates that the AI MUST reference "IDE Rules" (.cursorrules) at startup to understand environment-specific constraints. The operational flow is: LOCATE (00) -> READ IDE RULES -> ONBOARD -> SCAN INPUT (01) -> CP-STRUCTURE (Structural Design Proposal) -> ALIGN -> FULFILL.</directive>
+    <directive order="11">Prompter Mandate: INSTRUCTOR.xml mandates that all onboarding MUST be executed via "Omega Prompter" (PROMPTING.xml). The AI MUST use the 4-D Methodology (Discover, Diagnose, Develop, Deploy) to ensure crystal-clear project requirements. No PRD or Phase generation is authorized until a "Diagnostic Audit" of user intent is complete.</directive>
   </prime_directives>
 
   <!-- ============================================================
@@ -47,7 +47,7 @@
       cycles of increasing precision.
     </description>
 
-    <flow>LOCATE CONSTITUTION (00) -> READ IDE RULES -> ONBOARD -> SCAN INPUT (01) -> CP-STRUCTURE -> DESIGN ARCHITECTURE -> ALIGN STRUCTURE -> FULFILL FRACTAL -> SPAWN SHARDS -> NAVIGATE -> GATHER -> DIAGNOSE -> GENERATE -> PRESENT -> APPROVE</flow>
+    <flow>LOCATE CONSTITUTION (00) -> READ IDE RULES -> ONBOARD (via PROMPTING.xml) -> SCAN INPUT (01) -> CP-STRUCTURE -> DESIGN ARCHITECTURE -> ALIGN STRUCTURE -> FULFILL FRACTAL -> SPAWN SHARDS -> NAVIGATE -> GATHER -> DIAGNOSE -> GENERATE -> PRESENT -> APPROVE</flow>
 
     <applications>
       <apply>Gathering project context, diagnosing gaps, generating PRD, presenting, approving</apply>
@@ -486,7 +486,7 @@ STOP REPORT
 
         <step order="1">At session start, locate `00_Constitution` and ingest the local laws (FRACTAL_PROTOCOL, INSTRUCTOR, etc.).</step>
         <step order="2" name="IDE_RULES_INGESTION">Read the project's IDE Rules (e.g., `.cursorrules`) to understand environment-specific constraints, tools, and UI rules.</step>
-        <step order="3" name="DISCOVERY_ONBOARDING">Execute Onboarding and scan `01_User_Input` to extract the North Star, Seeds, and Pilot intent.</step>
+        <step order="3" name="PROMPTER_ONBOARDING">Initiate Onboarding using the **Omega Prompter (PROMPTING.xml)**. Execute the **4-D Methodology** (Discover, Diagnose, Develop, Deploy) to extract high-resolution requirements. Scan `01_User_Input` for additional Seeds.</step>
         <step order="4" name="CP_STRUCTURE">PROPOSE a custom Dev Layout (and `DEV_MAP.md`) based on the project's complexity. Acknowledge the 00-05 Fallback Core, but architect the expansion (06+) or sub-sharding strategy before fulfillment.</step>
         <step order="5" name="ELASTIC_ALIGNMENT">Align the workbench to the approved design. Maintain the **RULE OF 3** (3 files -> shard, 3 folders -> meta-folder) across all dev-work zones.</step>
         <step order="6">NEVER shard files or create versioned clusters inside the sterile `project/` directory.</step>
