@@ -10,7 +10,7 @@
 -->
 
 <omega_instructor
-  version="6.2"
+  version="6.3"
   location="constitution/">
 
   <!-- ============================================================
@@ -33,7 +33,7 @@
     <directive order="8">Audit Protocol: QUALITY.xml and EVALUATION_PROTOCOL.xml define how to audit projects efficiently.</directive>
     <directive order="9">Error Taxonomy: QUALITY.xml classifies errors (E1-E7) with repair protocols.</directive>
     <directive order="10">Multi-Session: PRACTICES.xml governs session continuity.</directive>
-    <directive order="11">Token Efficiency: EVALUATION_PROTOCOL.xml mandates the use of dev-work/evaluations/ to prevent redundant code scans.</directive>
+    <directive order="11">Token Efficiency: EVALUATION_PROTOCOL.xml and CONTEXT_PROTOCOL.xml mandate context pruning, auto-splitting, and hierarchical folder rotation to prevent redundant code scans and folder clutter.</directive>
   </prime_directives>
 
   <!-- ============================================================
@@ -47,7 +47,7 @@
       cycles of increasing precision.
     </description>
 
-    <flow>CONSULT MAP -> CONSULT EVALUATIONS -> GATHER -> DIAGNOSE -> GENERATE -> PRESENT -> APPROVE -> REFINE</flow>
+    <flow>CONSULT SHARDS -> CONSULT MAP -> CONSULT EVALUATIONS -> GATHER -> DIAGNOSE -> GENERATE -> PRESENT -> APPROVE -> REFINE</flow>
 
     <applications>
       <apply>Gathering project context, diagnosing gaps, generating PRD, presenting, approving</apply>
@@ -486,11 +486,12 @@ STOP REPORT
       </hive_job_detection>
 
         <step order="1">At session start, check for USER SPACE/dev-work/PICKUP_ALERT.md. If it exists, Telegram has dispatched new Founder Jobs. Read the alert and begin Hive orchestration immediately.</step>
-        <step order="2">Read `dev-work/context/CONTEXT_MAP.md` first to identify active branches.</step>
+        <step order="2">Read `dev-work/context/CONTEXT_MAP.md` first to identify active branches and Version Clusters.</step>
         <step order="3">Load only the specific `.context.md` modules required for the current task.</step>
-        <step order="4">If a module exceeds 2000 tokens, execute the **BRANCH & SPLIT** protocol (CONTEXT_PROTOCOL.xml).</step>
-        <step order="5">Update modules and the map after each significant action.</step>
-        <step order="6">Prune context by summarizing finished sub-tasks and unloading their detailed files.</step>
+        <step order="4">If a module exceeds 2000 tokens, execute the **BRANCH & SPLIT** protocol.</step>
+        <step order="5">**FOLDER ROTATION:** Every 3 documents, shard the files into a new `v[N]_changes/` folder per CONTEXT_PROTOCOL.xml.</step>
+        <step order="6">Update modules and the map after each significant action.</step>
+        <step order="7">Prune context by summarizing finished sub-tasks and unloading their detailed files.</step>
       </protocol>
 
       <what_to_write>
