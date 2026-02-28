@@ -10,7 +10,7 @@
 -->
 
 <omega_instructor
-  version="6.8"
+  version="6.9"
   location="constitution/">
 
   <!-- ============================================================
@@ -33,7 +33,7 @@
     <directive order="8">Audit Protocol: QUALITY.xml and EVALUATION_PROTOCOL.xml define how to audit projects efficiently.</directive>
     <directive order="9">Error Taxonomy: QUALITY.xml classifies errors (E1-E7) with repair protocols.</directive>
     <directive order="10">Multi-Session: PRACTICES.xml governs session continuity.</directive>
-    <directive order="11">Elastic Scaffolding: INSTRUCTOR.xml mandates "Fractal Fulfillment". The 00-05 zones are the Standard Core, but the AI MUST scale the dev-work space elastically based on project complexity. If a project needs 10 zones or 30 sub-shards to maintain the Rule of 3, the system must spawn them immediately.</directive>
+    <directive order="11">Autonomous Design: INSTRUCTOR.xml mandates "Dynamic Fractal Design". The AI MUST act as the Architect during discovery, proposing a custom dev structure that best serves the project complexity. 00-05 is the Fallback Core; infinite expansion and custom mapping are authorized to fulfill the Rule of 3.</directive>
   </prime_directives>
 
   <!-- ============================================================
@@ -47,7 +47,7 @@
       cycles of increasing precision.
     </description>
 
-    <flow>LOCATE CONSTITUTION (00) -> ONBOARD (Scale Logic) -> ALIGN STRUCTURE -> SCAN INPUT (01) -> FULFILL FRACTAL -> SPAWN SHARDS -> NAVIGATE -> GATHER -> DIAGNOSE -> GENERATE -> PRESENT -> APPROVE</flow>
+    <flow>LOCATE CONSTITUTION (00) -> ONBOARD -> DESIGN ARCHITECTURE -> ALIGN STRUCTURE -> SCAN INPUT (01) -> FULFILL FRACTAL -> SPAWN SHARDS -> NAVIGATE -> GATHER -> DIAGNOSE -> GENERATE -> PRESENT -> APPROVE</flow>
 
     <applications>
       <apply>Gathering project context, diagnosing gaps, generating PRD, presenting, approving</apply>
@@ -485,12 +485,13 @@ STOP REPORT
       </hive_job_detection>
 
         <step order="1">At session start, locate `00_Constitution` and ingest the local laws (FRACTAL_PROTOCOL, INSTRUCTOR, etc.).</step>
-        <step order="2" name="ELASTIC_ALIGNMENT">Execute "Fractal Fulfillment". Reorganize legacy folders into the 01-05 Core. If the project's scale exceeds the Core's capacity, spawn Zone 06+ or sub-shards immediately to maintain the Rule of 3.</step>
-        <step order="3">Scan `01_User_Input` to extract the North Star and Pilot intent. Adjust scaffolding depth based on the scope's complexity.</step>
-        <step order="4">If any directory in the fractal tree exceeds the **RULE OF 3**, execute the **FRACTAL SHARDING** protocol.</step>
-        <step order="5">NEVER shard files or create versioned clusters inside the sterile `project/` directory.</step>
-        <step order="6">Update sharded modules, local maps, and the `MASTER_PRD.md` after each significant action.</step>
-        <step order="7">Prune context by summarizing finished sub-tasks into the fractal tree (within dev-work).</step>
+        <step order="2" name="DYNAMIC_DESIGN">Based on the Onboarding/Discovery output, PROPOSE a custom dev structure if the project exceeds standard complexity. Define the `DEV_MAP.md` before fulfillment.</step>
+        <step order="3" name="ELASTIC_ALIGNMENT">Execute "Fractal Fulfillment". Align the workbench to the proposed design. Use 00-05 as the Fallback Core for standard project needs.</step>
+        <step order="4">Scan `01_User_Input` to extract the North Star and Pilot intent. Adjust scaffolding depth immediately if scope creep is detected.</step>
+        <step order="5">Strictly adhere to the **RULE OF 3** (3 files -> shard, 3 folders -> meta-folder) across all dev-work zones.</step>
+        <step order="6">NEVER shard files or create versioned clusters inside the sterile `project/` directory.</step>
+        <step order="7">Update sharded modules, local maps, and the `MASTER_PRD.md` after each significant action.</step>
+        <step order="8">Prune context by summarizing finished sub-tasks into the fractal tree (within dev-work).</step>
       </protocol>
 
       <what_to_write>
