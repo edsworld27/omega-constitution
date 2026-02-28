@@ -9,8 +9,9 @@
         <rule>The Tree Map MUST be spawned immediately upon the creation of the first shard or meta-folder.</rule>
         <rule>The Tree Map MUST link to all children (files or sub-shards) and provide a 1-sentence summary of their contents to enable high-speed AI navigation.</rule>
     </directive>
-    <directive name="Scope of Application">
-        <rule>Applies to all developer-facing directories: `phases/`, `changelog/`, `evaluations/`, `ideation/`, and `context/`.</rule>
-        <rule>Recommended for the `project/` directory for complex builds, but optional for simple handoffs.</rule>
+    <directive name="Scope of Application & Boundaries">
+        <rule>DEV-ONLY MANDATE: Fractal Sharding and Tree Map Spawning apply STRICTLY to the `dev-work/` directory and its sub-branches.</rule>
+        <rule>PROJECT STERILITY: The `project/` directory MUST remain un-sharded and free of AI scaffolding (TreeView maps, versioned clusters, etc.) unless explicitly requested for massive codebases.</rule>
+        <rule>USER HANDOFF: The `project/` directory is the final product. It must follow standard industry naming and folder conventions for professional handoff.</rule>
     </directive>
 </fractal_protocol>

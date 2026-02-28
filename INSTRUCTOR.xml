@@ -10,7 +10,7 @@
 -->
 
 <omega_instructor
-  version="6.4"
+  version="6.5"
   location="constitution/">
 
   <!-- ============================================================
@@ -33,7 +33,7 @@
     <directive order="8">Audit Protocol: QUALITY.xml and EVALUATION_PROTOCOL.xml define how to audit projects efficiently.</directive>
     <directive order="9">Error Taxonomy: QUALITY.xml classifies errors (E1-E7) with repair protocols.</directive>
     <directive order="10">Multi-Session: PRACTICES.xml governs session continuity.</directive>
-    <directive order="11">Token Efficiency: EVALUATION_PROTOCOL.xml, CONTEXT_PROTOCOL.xml, and FRACTAL_PROTOCOL.xml mandate context pruning, auto-splitting, and infinite fractal sharding (The Rule of 3) to ensure mathematical alignment and light-speed retrieval.</directive>
+    <directive order="11">Token Efficiency: EVALUATION_PROTOCOL.xml, CONTEXT_PROTOCOL.xml, and FRACTAL_PROTOCOL.xml mandate context pruning, auto-splitting, and infinite fractal sharding (The Rule of 3) STRICTLY within the dev-work space. The project directory MUST remain sterile for handoff.</directive>
   </prime_directives>
 
   <!-- ============================================================
@@ -487,9 +487,10 @@ STOP REPORT
         <step order="1">At session start, check for USER SPACE/dev-work/PICKUP_ALERT.md. If it exists, Telegram has dispatched new Founder Jobs. Read the alert and begin Hive orchestration immediately.</step>
         <step order="2">Read `dev-work/context/CONTEXT_MAP.md` first to identify active shards and fractal addresses.</step>
         <step order="3">Navigate the fractal tree via local `TREE_MAP.md` spawns to load required modules.</step>
-        <step order="4">If a directory exceeds the **RULE OF 3**, execute the **FRACTAL SHARDING** protocol.</step>
-        <step order="5">Update modules, local maps, and the master PRD after each significant action.</step>
-        <step order="6">Prune context by summarizing finished sub-tasks into the fractal tree.</step>
+        <step order="4">If a directory in `dev-work/` exceeds the **RULE OF 3**, execute the **FRACTAL SHARDING** protocol.</step>
+        <step order="5">NEVER shard files or create versioned clusters inside the `project/` directory.</step>
+        <step order="6">Update modules, local maps, and the master PRD after each significant action.</step>
+        <step order="7">Prune context by summarizing finished sub-tasks into the fractal tree (within dev-work).</step>
       </protocol>
 
       <what_to_write>
