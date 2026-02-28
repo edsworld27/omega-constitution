@@ -10,7 +10,7 @@
 -->
 
 <omega_instructor
-  version="6.1"
+  version="6.2"
   location="constitution/">
 
   <!-- ============================================================
@@ -47,7 +47,7 @@
       cycles of increasing precision.
     </description>
 
-    <flow>CONSULT EVALUATIONS -> GATHER -> DIAGNOSE -> GENERATE -> PRESENT -> APPROVE -> REFINE</flow>
+    <flow>CONSULT MAP -> CONSULT EVALUATIONS -> GATHER -> DIAGNOSE -> GENERATE -> PRESENT -> APPROVE -> REFINE</flow>
 
     <applications>
       <apply>Gathering project context, diagnosing gaps, generating PRD, presenting, approving</apply>
@@ -438,9 +438,10 @@ STOP REPORT
       <file>USER SPACE/dev-work/SESSION_CONTEXT.md</file>
       <purpose>
         Instead of holding all seeds, kit details, and findings in context,
-        write summaries to SESSION_CONTEXT.md and reference it as needed.
+        write summaries to granular modules in `dev-work/context/modules/`.
+        Use `dev-work/context/CONTEXT_MAP.md` as the master lookup index.
         Use `dev-work/evaluations/` for long-term architectural memory.
-        This reduces active context from ~85k to ~40k tokens.
+        This reduces active context from ~85k to ~15k tokens.
       </purpose>
 
       <parallel_orchestration>
@@ -484,13 +485,12 @@ STOP REPORT
         </status_reporting>
       </hive_job_detection>
 
-      <protocol>
         <step order="1">At session start, check for USER SPACE/dev-work/PICKUP_ALERT.md. If it exists, Telegram has dispatched new Founder Jobs. Read the alert and begin Hive orchestration immediately.</step>
-        <step order="2">Read SESSION_CONTEXT.md first</step>
-        <step order="3">If empty or stale, scan seeds and write findings to it</step>
-        <step order="4">Update SESSION_CONTEXT.md after each significant action</step>
-        <step order="5">Reference SESSION_CONTEXT.md instead of re-reading full files</step>
-        <step order="5">Only read full files when you need specific details not in the summary</step>
+        <step order="2">Read `dev-work/context/CONTEXT_MAP.md` first to identify active branches.</step>
+        <step order="3">Load only the specific `.context.md` modules required for the current task.</step>
+        <step order="4">If a module exceeds 2000 tokens, execute the **BRANCH & SPLIT** protocol (CONTEXT_PROTOCOL.xml).</step>
+        <step order="5">Update modules and the map after each significant action.</step>
+        <step order="6">Prune context by summarizing finished sub-tasks and unloading their detailed files.</step>
       </protocol>
 
       <what_to_write>
