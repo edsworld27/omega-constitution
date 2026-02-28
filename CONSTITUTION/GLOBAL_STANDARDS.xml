@@ -1,4 +1,4 @@
-<coding_principles version="1.0">
+<global_standards version="1.0">
     <principle name="Modularity & DRY">
         <directive>Always architecture code into small, specialized modules. Never repeat logic across components.</directive>
         <standard>Use functional components in React and class-based services in Python/Node.js where appropriate.</standard>
@@ -23,4 +23,4 @@
         <directive>Code must be optimized for multi-agent collaboration. Maintain a consistent, predictable structure.</directive>
         <standard>Follow the `STRUCTURE.xml` conventions strictly. Use clear, descriptive variable names that reflect intent.</standard>
     </principle>
-</coding_principles>
+</global_standards>
