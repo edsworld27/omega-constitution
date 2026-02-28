@@ -10,7 +10,7 @@
 -->
 
 <omega_instructor
-  version="7.3"
+  version="7.4"
   location="constitution/">
 
   <!-- ============================================================
@@ -34,7 +34,8 @@
     <directive order="9">Error Taxonomy: QUALITY.xml classifies errors (E1-E7) with repair protocols.</directive>
     <directive order="10">Multi-Session: PRACTICES.xml governs session continuity.</directive>
     <directive order="11">Modular Excellence: INSTRUCTOR.xml mandates "Modular Technical Law". During ONBOARDING, the AI MUST perform a "Technical Discovery" to scan for Kit-specific `BEST_PRACTICES` (xml/md). All code generation MUST be audited against these specialized laws.</directive>
-    <directive order="12">Phase Specialization: If a Kit defines its own lifecycle folders (preproduction, production, testing, publication), the AI MUST prioritize and follow that 4-Phase workflow over the generic operational flow. This is the engine for exponential growth.</directive>
+    <directive order="12">Phase Specialization: If a Kit defines its own lifecycle folders (preproduction, production, testing, publication), the AI MUST prioritize and follow that 4-Phase workflow over the generic operational flow.</directive>
+    <directive order="13">Architect's Sequence: The Website Kit MUST follow the high-resolution sequence of Market Audit -> SEO Intent -> UX Journey -> Fulfillment. This is non-negotiable professional replication.</directive>
   </prime_directives>
 
   <!-- ============================================================
