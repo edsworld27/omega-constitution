@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ============================================================
+  OMEGA GITHUB PUBLISHING PROTOCOL
+  ============================================================
+  VERSION:      1.0
+  STATUS:       LAW
+  PURPOSE:      Defines the rules, workflows, and safety checks
+                for publishing the Omega Ecosystem to GitHub.
+                Governs multi-repo sync, commit standards,
+                and release management.
+  ============================================================
+-->
+
+<github_publishing
+  version="1.0"
+  status="LAW"
+  location="constitution/">
+
+  <!-- ============================================================
+       PART 1: ECOSYSTEM ARCHITECTURE
+  ============================================================ -->
+
+  <ecosystem_architecture>
+    <description>
+      The Omega Ecosystem consists of 5 interconnected repositories
+      managed from a single source of truth: the DEV Panel.
+    </description>
+
+    <repositories>
+      <repo name="omega-constitution" role="The Brain" priority="1">
+        <url>https://github.com/edsworld27/omega-constitution.git</url>
+        <description>Protocols, standards, and AI behavior rules</description>
+        <local_path>06_Full_System/Dev Version (Edit)/omega-constitution DEV/</local_path>
+      </repo>
+
+      <repo name="omega-claw" role="The Dispatch" priority="2">
+        <url>https://github.com/edsworld27/omega-claw.git</url>
+        <description>Orchestration, automation, and agent management</description>
+        <local_path>06_Full_System/Dev Version (Edit)/Omega Claw v1 DEV/</local_path>
+      </repo>
+
+      <repo name="omega-store" role="The Marketplace" priority="3">
+        <url>https://github.com/edsworld27/omega-store.git</url>
+        <description>SaaS kits, skills, and reusable components</description>
+        <local_path>06_Full_System/Dev Version (Edit)/omega-store DEV/</local_path>
+      </repo>
+
+      <repo name="Omega-System" role="Execution Shell" priority="4">
+        <url>https://github.com/edsworld27/Omega-System.git</url>
+        <description>User-facing entry points and execution layer</description>
+        <local_path>06_Full_System/Dev Version (Edit)/Omega System Public DEV/</local_path>
+      </repo>
+
+      <repo name="omega-dev-panel" role="Master Control" priority="0">
+        <description>The DEV Panel itself - single source of truth</description>
+        <note>Published last after all child repos are synced</note>
+      </repo>
+    </repositories>
+
+    <hierarchy>
+      <rule>Constitution changes MUST be published before dependent repos</rule>
+      <rule>All repos sync from DEV Panel - never edit GitHub directly</rule>
+      <rule>LIVE folders are read-only mirrors - DEV folders are editable</rule>
+    </hierarchy>
+  </ecosystem_architecture>
+
+  <!-- ============================================================
+       PART 2: GOD-MODE SYNC PROTOCOL
+  ============================================================ -->
+
+  <god_mode_sync>
+    <description>
+      The omega-publish.py script implements "God-Mode" - a single command
+      that syncs all repositories from the local master to GitHub.
+    </description>
+
+    <workflow>
+      <step order="1" name="Preparation">
+        Ensure all changes are saved in DEV folders
+      </step>
+      <step order="2" name="Validation">
+        Run pre-publish checks (see Pre-Publish Checklist)
+      </step>
+      <step order="3" name="Execute Sync">
+        Run: python omega-publish.py "Your commit message"
+      </step>
+      <step order="4" name="Verify">
+        Check GitHub to confirm all repos updated correctly
+      </step>
+    </workflow>
+
+    <sync_sequence>
+      <phase order="1">Clone each remote repo to temp directory</phase>
+      <phase order="2">Rsync local DEV content over clone (excluding .git)</phase>
+      <phase order="3">Stage all changes (git add -A)</phase>
+      <phase order="4">Commit with provided message</phase>
+      <phase order="5">Push to origin/main</phase>
+      <phase order="6">Cleanup temp directory</phase>
+      <phase order="7">Sync DEV Panel itself last</phase>
+    </sync_sequence>
+
+    <safety_features>
+      <feature>Skips repos with no changes detected</feature>
+      <feature>Preserves .git history on remote</feature>
+      <feature>Cleans up temp files on success or failure</feature>
+      <feature>Reports status for each repository</feature>
+    </safety_features>
+  </god_mode_sync>
+
+  <!-- ============================================================
+       PART 3: COMMIT STANDARDS
+  ============================================================ -->
+
+  <commit_standards>
+    <description>
+      All commits must follow these standards for clarity and traceability.
+    </description>
+
+    <message_format>
+      <pattern>[Type]: [Brief Description]</pattern>
+      <max_length>72 characters for first line</max_length>
+    </message_format>
+
+    <commit_types>
+      <type name="feat" description="New feature or capability"/>
+      <type name="fix" description="Bug fix or error correction"/>
+      <type name="docs" description="Documentation changes only"/>
+      <type name="refactor" description="Code restructuring without behavior change"/>
+      <type name="protocol" description="Constitution/protocol updates"/>
+      <type name="sync" description="Multi-repo synchronization"/>
+      <type name="security" description="Security-related changes"/>
+      <type name="kit" description="Store kit additions or updates"/>
+      <type name="skill" description="Store skill additions or updates"/>
+      <type name="agent" description="Claw agent changes"/>
+    </commit_types>
+
+    <examples>
+      <example>protocol: Add Claude Cookbooks to SOURCES.xml Tier 3</example>
+      <example>feat: Implement phantom agent landmark navigation</example>
+      <example>fix: Resolve orchestrator race condition</example>
+      <example>docs: Update TREEMAP with constitution structure</example>
+      <example>sync: God-Mode ecosystem alignment v16.34</example>
+      <example>kit: Add marketing agency website sub-kit</example>
+    </examples>
+
+    <forbidden_messages>
+      <forbidden>"WIP" or "Work in progress"</forbidden>
+      <forbidden>"Fix stuff" or vague descriptions</forbidden>
+      <forbidden>"." or empty-like messages</forbidden>
+      <forbidden>Messages without type prefix</forbidden>
+    </forbidden_messages>
+  </commit_standards>
+
+  <!-- ============================================================
+       PART 4: PRE-PUBLISH CHECKLIST
+  ============================================================ -->
+
+  <pre_publish_checklist>
+    <description>
+      MANDATORY checks before running omega-publish.py
+    </description>
+
+    <checklist>
+      <item category="Files" required="true">
+        All intended changes are in DEV folders, not LIVE folders
+      </item>
+      <item category="Files" required="true">
+        No sensitive data (.env, API keys, credentials) in staged files
+      </item>
+      <item category="Files" required="true">
+        No .DS_Store or IDE config files that shouldn't be committed
+      </item>
+
+      <item category="Constitution" required="true">
+        Protocol XML files are well-formed (valid XML syntax)
+      </item>
+      <item category="Constitution" required="true">
+        Version numbers updated if protocol content changed
+      </item>
+
+      <item category="Code" required="true">
+        Python files have no syntax errors
+      </item>
+      <item category="Code" required="true">
+        No debug print statements or TODO comments left in
+      </item>
+
+      <item category="Documentation" required="true">
+        TREEMAP.md updated if structure changed
+      </item>
+      <item category="Documentation" required="true">
+        README files updated for new features
+      </item>
+
+      <item category="Backup" required="true">
+        omega-backup.py run before major changes
+      </item>
+    </checklist>
+
+    <validation_commands>
+      <command purpose="Check XML syntax">
+        xmllint --noout *.xml
+      </command>
+      <command purpose="Check Python syntax">
+        python -m py_compile *.py
+      </command>
+      <command purpose="Find sensitive files">
+        grep -r "API_KEY\|SECRET\|PASSWORD" --include="*.py" --include="*.md"
+      </command>
+      <command purpose="List uncommitted changes">
+        git status --porcelain
+      </command>
+    </validation_commands>
+  </pre_publish_checklist>
+
+  <!-- ============================================================
+       PART 5: BRANCH MANAGEMENT
+  ============================================================ -->
+
+  <branch_management>
+    <description>
+      Branch strategy for the Omega Ecosystem.
+    </description>
+
+    <branches>
+      <branch name="main" role="Production" protected="true">
+        <description>Live production code - always deployable</description>
+        <rule>All pushes via omega-publish.py only</rule>
+        <rule>Direct edits to main branch are FORBIDDEN</rule>
+      </branch>
+
+      <branch name="dev" role="Development" protected="false">
+        <description>Optional development branch for experimental work</description>
+        <rule>Merge to main only after testing</rule>
+      </branch>
+
+      <branch name="feature/*" role="Feature Work" protected="false">
+        <description>Short-lived branches for specific features</description>
+        <rule>Delete after merging to main</rule>
+      </branch>
+    </branches>
+
+    <dev_panel_workflow>
+      <rule>The DEV Panel IS the development branch</rule>
+      <rule>DEV folders = work in progress</rule>
+      <rule>LIVE folders = mirror of what's on GitHub main</rule>
+      <rule>omega-publish.py promotes DEV to GitHub main</rule>
+    </dev_panel_workflow>
+  </branch_management>
+
+  <!-- ============================================================
+       PART 6: RELEASE MANAGEMENT
+  ============================================================ -->
+
+  <release_management>
+    <description>
+      Protocol for versioned releases of the Omega Ecosystem.
+    </description>
+
+    <versioning_scheme>
+      <format>v[MAJOR].[MINOR]</format>
+      <major_increment>Breaking changes or architecture shifts</major_increment>
+      <minor_increment>New features, protocols, or significant updates</minor_increment>
+      <current_version>v16.33</current_version>
+    </versioning_scheme>
+
+    <release_process>
+      <step order="1">Update version in relevant files</step>
+      <step order="2">Create changelog entry in 00_Changelog/</step>
+      <step order="3">Run full pre-publish checklist</step>
+      <step order="4">Execute omega-publish.py with release message</step>
+      <step order="5">Create GitHub release tag (optional)</step>
+      <step order="6">Update CONTEXT_DEV.md with new state</step>
+    </release_process>
+
+    <changelog_format>
+      <filename>v[VERSION]_[Short_Description].md</filename>
+      <content>
+        - Date and version
+        - Summary of changes
+        - Files affected
+        - Breaking changes (if any)
+        - Migration notes (if needed)
+      </content>
+    </changelog_format>
+  </release_management>
+
+  <!-- ============================================================
+       PART 7: EMERGENCY PROCEDURES
+  ============================================================ -->
+
+  <emergency_procedures>
+    <description>
+      What to do when things go wrong.
+    </description>
+
+    <scenario name="Bad Push - Need Rollback">
+      <step order="1">DO NOT PANIC</step>
+      <step order="2">Check 99 Back Up/ for recent backup</step>
+      <step order="3">Restore from backup to DEV folders</step>
+      <step order="4">Run omega-publish.py to push corrected version</step>
+      <note>Git history is preserved - you can also git revert on GitHub</note>
+    </scenario>
+
+    <scenario name="Publish Script Fails Mid-Sync">
+      <step order="1">Check which repos completed (look at console output)</step>
+      <step order="2">Manually verify GitHub state for each repo</step>
+      <step order="3">Fix the issue that caused failure</step>
+      <step order="4">Re-run omega-publish.py (it will skip unchanged repos)</step>
+    </scenario>
+
+    <scenario name="Accidental Edit to LIVE Folder">
+      <step order="1">DO NOT publish - this will push wrong content</step>
+      <step order="2">Copy correct version from GitHub or backup to LIVE</step>
+      <step order="3">Make changes in DEV folder instead</step>
+      <step order="4">Publish normally</step>
+    </scenario>
+
+    <scenario name="Credentials Leaked">
+      <step order="1">IMMEDIATELY revoke/rotate the exposed credentials</step>
+      <step order="2">Remove from files and commit</step>
+      <step order="3">Consider git filter-branch to remove from history</step>
+      <step order="4">Add to .gitignore to prevent future leaks</step>
+    </scenario>
+  </emergency_procedures>
+
+  <!-- ============================================================
+       PART 8: AUTOMATION SCRIPTS
+  ============================================================ -->
+
+  <automation_scripts>
+    <script name="omega-publish.py" location="omega-dev/">
+      <purpose>God-Mode multi-repo sync to GitHub</purpose>
+      <usage>python omega-publish.py "Commit message here"</usage>
+      <default_message>Auto-Sync: God-Mode Master Architecture Update</default_message>
+    </script>
+
+    <script name="omega-backup.py" location="omega-dev/">
+      <purpose>Create timestamped backup snapshot</purpose>
+      <usage>python omega-backup.py</usage>
+      <output>.dev_backups/omega_snapshot_[timestamp].zip</output>
+    </script>
+
+    <future_scripts>
+      <script name="omega-validate.py" status="planned">
+        Pre-publish validation automation
+      </script>
+      <script name="omega-release.py" status="planned">
+        Full release workflow with changelog generation
+      </script>
+    </future_scripts>
+  </automation_scripts>
+
+  <!-- ============================================================
+       PART 9: GITHUB REPOSITORY SETTINGS
+  ============================================================ -->
+
+  <repository_settings>
+    <description>
+      Recommended GitHub settings for Omega repositories.
+    </description>
+
+    <settings>
+      <setting name="Default Branch">main</setting>
+      <setting name="Branch Protection">
+        Recommended for main: Require PR reviews (optional)
+      </setting>
+      <setting name="Visibility">
+        Public (for community) or Private (for enterprise)
+      </setting>
+      <setting name="License">MIT (recommended for open source)</setting>
+    </settings>
+
+    <files_to_include>
+      <file>README.md</file>
+      <file>.gitignore</file>
+      <file>LICENSE (if public)</file>
+    </files_to_include>
+
+    <files_to_exclude>
+      <file>.env (always in .gitignore)</file>
+      <file>*.local files</file>
+      <file>node_modules/, __pycache__/, .venv/</file>
+      <file>.DS_Store</file>
+      <file>*.log files</file>
+    </files_to_exclude>
+  </repository_settings>
+
+</github_publishing>
