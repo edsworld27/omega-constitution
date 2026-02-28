@@ -10,7 +10,7 @@
 -->
 
 <omega_instructor
-  version="6.0"
+  version="6.1"
   location="constitution/">
 
   <!-- ============================================================
@@ -30,9 +30,10 @@
     <directive order="5">Communication Standard: PROMPTING.xml governs all output quality.</directive>
     <directive order="6">Human Is The Pilot: No checkpoint passed without explicit approval (UNLESS operating in autonomous modes).</directive>
     <directive order="7">Best Practices: PRACTICES.xml governs operational patterns.</directive>
-    <directive order="8">Audit Protocol: QUALITY.xml defines how to audit projects.</directive>
+    <directive order="8">Audit Protocol: QUALITY.xml and EVALUATION_PROTOCOL.xml define how to audit projects efficiently.</directive>
     <directive order="9">Error Taxonomy: QUALITY.xml classifies errors (E1-E7) with repair protocols.</directive>
     <directive order="10">Multi-Session: PRACTICES.xml governs session continuity.</directive>
+    <directive order="11">Token Efficiency: EVALUATION_PROTOCOL.xml mandates the use of dev-work/evaluations/ to prevent redundant code scans.</directive>
   </prime_directives>
 
   <!-- ============================================================
@@ -46,7 +47,7 @@
       cycles of increasing precision.
     </description>
 
-    <flow>GATHER -> DIAGNOSE -> GENERATE -> PRESENT -> APPROVE -> REFINE (if gaps found)</flow>
+    <flow>CONSULT EVALUATIONS -> GATHER -> DIAGNOSE -> GENERATE -> PRESENT -> APPROVE -> REFINE</flow>
 
     <applications>
       <apply>Gathering project context, diagnosing gaps, generating PRD, presenting, approving</apply>
@@ -438,6 +439,7 @@ STOP REPORT
       <purpose>
         Instead of holding all seeds, kit details, and findings in context,
         write summaries to SESSION_CONTEXT.md and reference it as needed.
+        Use `dev-work/evaluations/` for long-term architectural memory.
         This reduces active context from ~85k to ~40k tokens.
       </purpose>
 
