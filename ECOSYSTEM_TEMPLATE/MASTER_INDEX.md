@@ -1,47 +1,60 @@
-# 🌐 OMEGA ECOSYSTEM MASTER INDEX (UNIFIED CORE)
+# OMEGA SYSTEM - MASTER INDEX
 
-> **"Elegance in Simplicity. One Core, One Production Hub."**
-> This file is the absolute source of truth for the Unified Omega Architecture.
-
----
-
-## 🏗️ The Dual-Core Hierarchy
-
-### 🕹️ [Omega Control](file:///Volumes/Internal/Projects/Omega%20System/Omega%20Control/)
-*The Unified Mission Control, AI Brain, & Governance layer.*
-- **Mission Control**: Next.js Dashboard & FastAPI Bridge.
-- **AI Brain**: `omega-dev` workspace and `00_Agents` swarms.
-- **Send/Receive**: [`00_Send_Receive`](file:///Volumes/Internal/Projects/Omega%20System/Omega%20Control/00_Send_Receive/) (Dedicated I/O for the core).
-- **Constitution**: System laws and behavioral guardrails.
-- **Backups**: Remote-Only GitHub snapshot registry.
-- **Ignition**: [`omega-ignite.py`](file:///Volumes/Internal/Projects/Omega%20System/Omega%20Control/00%20Rules/omega-ignite.py) (The system heartbeat).
-
-### 📁 [Projects](file:///Volumes/Internal/Projects/Omega%20System/Projects/)
-*The High-Fidelity Creative Production skeleton.*
-- **Production Hub**: All website kits and client projects.
-- **Live Registry**: XML pointers for zero-bloat GitHub synchronization.
+> **The AI-Powered Project Orchestrator**
 
 ---
 
-## 📥 [00_Drop_Zone](file:///Volumes/Internal/Projects/Omega%20System/00%20User/00_Drop_Zone/)
-*Incoming assets and design files (Pilot-to-System).*
+## Quick Start
 
-## 📤 [01_Send_Off](file:///Volumes/Internal/Projects/Omega%20System/00%20User/01_Send_Off/)
-*Finalized products and collation packages (System-to-Pilot).*
-
----
-
-## 🏗️ Core Repositories (GitHub)
-
-| Component | Repository URL | Purpose |
-|:----------|:---------------|:--------|
-| **Omega System** | [https://github.com/edsworld27/Omega-System](https://github.com/edsworld27/Omega-System) | Root OS, UI, & Logic |
-| **Omega Store** | [https://github.com/edsworld27/omega-store](https://github.com/edsworld27/omega-store) | Website Kits & Modules |
-| **Omega Backup** | [https://github.com/edsworld27/omega-backup](https://github.com/edsworld27/omega-backup) | Remote Historical Registry |
+```bash
+python RUN.py              # Start the system
+python RUN.py --onboard    # First-time setup
+```
 
 ---
 
-## ⚡ System Igniters
+## Structure
 
-- **Full Ignition**: `python3 "Omega Control/00 Rules/omega-ignite.py"`
-- **Global Sync**: `python3 "Omega Control/00 Rules/omega-publish.py"`
+```
+omega-system/
+├── RUN.py                    # Entry point
+├── 00 User/
+│   ├── 00_Drop_Zone/         # Drop your files here
+│   └── 01_Send_Off/          # Finished work appears here
+├── Omega Control/
+│   └── 00 Rules/             # Control panel + Python scripts
+│       ├── python/           # Automation scripts
+│       └── 03_Context/       # Session tracking
+├── Projects/
+│   └── (your projects here)
+└── MASTER_INDEX.md           # This file
+```
+
+---
+
+## For Users
+
+1. Clone this repo
+2. Run `python RUN.py --onboard`
+3. Drop your project files in `00 User/00_Drop_Zone/`
+4. Open in your AI IDE and say: "Read the constitution and help me"
+
+---
+
+## The Quad Ecosystem (GitHub)
+
+| Repo | Codename | Purpose |
+|------|----------|---------|
+| [omega-constitution](https://github.com/edsworld27/omega-constitution) | Brain | Protocols, Rules, Standards |
+| [omega-store](https://github.com/edsworld27/omega-store) | Marketplace | Kits, Skills, Templates |
+| [omega-claw](https://github.com/edsworld27/omega-claw) | Dispatch | Orchestration, Agents |
+| [Omega-System](https://github.com/edsworld27/Omega-System) | Shell | This orchestrator |
+
+---
+
+## For AI
+
+1. Fetch constitution: `https://github.com/edsworld27/omega-constitution`
+2. Read `INSTRUCTOR.xml` for rules
+3. Check local context: `Omega Control/00 Rules/03_Context/CONTEXT_DEV.md`
+4. Follow the constitution's guidance
